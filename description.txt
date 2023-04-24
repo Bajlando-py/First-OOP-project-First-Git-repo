@@ -1,0 +1,68 @@
+Project 41 - Bike Rental System OOP
+Description
+This project simulates simple Bike Rental System which performs various
+functionality. There are two participant of this system - customers and bike
+rental system. Each of them has their functionality that can be performed.
+Customer can request only one type of rental i.e hourly, daily or weekly. They
+are free to choose the number of bikes they want and requested bikes
+should be less than available stock.
+Customers:
+• See currently available bikes in the rental system
+• Rent bikes on hourly basis and it costs $5 per hour.
+• Rent bikes on daily basis and it costs $20 per day.
+• Rent bikes on weekly basis and it costs $60 per week.
+• Family Rental, a promotion that can include from 3 to 6 bikes (of any type)
+with a discount of 30% of the total price
+Bike rental system:
+• Issue a bill when customer decides to return the bike.
+• Display available bikes in the system
+• Take requests on hourly, daily and weekly basis by verifying available bikes
+Steps for development
+TODO 1 - Create Bike Rental Class and initialize stock attribute
+TODO 2 - Create a method to display stock
+TODO 3 - Create a method to rent bike on hourly bases
+TODO 4 - Create a method to rent bike on daily bases
+TODO 5 - Create a method to rent bike on weekly bases
+TODO 6 - Create a method to return bike from the system
+TODO 7 - Create Customer Class and initialize attributes
+TODO 8 - Create a method to request bike from the system
+TODO 9 - Create a method to return bike to the system
+TODO 10 - Main program logic : print options to the console
+TODO 11 - Ask from user to get option (check if it is int)
+TODO 12 - Based on selected choice call methods from Bike
+Rental and Customer classes.
+BikeRental Class
+This class is used to represent Bike Rental system
+Attributes:
+- stock
+(int) The number of bikes that are available currently in the system
+ex. 100
+Methods:
+- display_stock()
+(int) Displays the bikes currently available for rent in the system
+ex. 100
+- rent_bike_on_hourly_basis()
+To rent a bike on hourly basis to a customer
+- rent_bike_on_daily_basis()
+To rent a bike on daily basis to a customer
+- rent_bike_on_weekly_basis()
+To rent a bike on weekly basis to a customer
+- return_bike()
+Accept a rented bike from a customer, increase number of available
+bikes and return a bill
+Customer Class
+This class is used to represent Customer objects
+Attributes:
+- bikes
+(int) The number of bikes that customer rented
+- rental_basis
+(int) The number for rental type (hourly, daily, weekly)
+- rental_time
+(int) The rental duration
+- bill
+(int) The amount that needs to be payed
+Methods:
+- request_bike()
+Takes a request from the customer for the number of bikes
+- return_bike()
+Allows customers to return their bikes to the rental shop
