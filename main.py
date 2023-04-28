@@ -1,3 +1,4 @@
+import datetime
 import datetime as dt
 
 
@@ -14,22 +15,45 @@ class BikeRental:
         return self.__stock
 
     # TODO 3 - Create a method to rent bike on hourly bases
-    def rent_bike_on_hourly_basis(self, num_bikes):
+    def rent_bike_on_hourly_bases(self, num_bikes):
         """Rents a bike on hourly bases."""
-        if 0 >= num_bikes > self.__stock:
+        if 0 >= num_bikes or num_bikes > self.__stock:
             print(f"There are not enough bikes available. We currently have {self.__stock} available.")
             return None
         else:
             rent_start = dt.datetime.now()
-            print(f"You have rented {num_bikes} bike(s) on {rent_start.day}.{rent_start.month}.{rent_start.year} at {rent_start.hour}:{rent_start.minute}.")
-            print("The charge is $5 per bike for 1 hour.\nEnjoy the ride.")
+            print(
+                f"You have rented {num_bikes} bike(s) on {rent_start.year}-{rent_start.month}-{rent_start.day} at {rent_start.hour}:{rent_start.minute} {rent_start.second}.")
+            print("The charge is $5 per bike for 1 hour.\nEnjoy your ride.")
             self.__stock -= num_bikes
             return rent_start
 
+    # TODO 4 - Create a method to rent bike on daily bases
+    def rent_bike_on_daily_bases(self, num_bikes):
+        """Rents a bike on daily bases."""
+        if 0 >= num_bikes or num_bikes > self.__stock:
+            print(f"There are not enough bikes available. We currently have {self.__stock} available.")
+            return None
+        else:
+            rent_start = dt.date.today()
+            print(f"You have rented {num_bikes} bike(s) on {rent_start}")
+            print("The charge is $20 per bike for 1 day.\nEnjoy your ride.")
+            self.__stock -= num_bikes
+            return rent_start
 
-# TODO 4 - Create a method to rent bike on daily bases
+    # TODO 5 - Create a method to rent bike on weekly bases
+    def rent_bike_on_weekly_bases(self, num_bikes):
+        """Rents a bike on weekly bases."""
+        if 0 >= num_bikes or num_bikes > self.__stock:
+            print(f"There are not enough bikes available. We currently have {self.__stock} available.")
+            return None
+        else:
+            rent_start = dt.date.today()
+            print(f"You have rented {num_bikes} bike(s) on {rent_start}")
+            print("The charge is $60 per bike for 1 week.\nEnjoy your ride.")
+            self.__stock -= num_bikes
+            return rent_start
 
-# TODO 5 - Create a method to rent bike on weekly bases
 
 # TODO 6 - Create a method to return bike from the system
 
@@ -47,5 +71,9 @@ class BikeRental:
 
 rental = BikeRental()
 rental.display_stock()
-rental.rent_bike_on_hourly_basis(8)
+rental.rent_bike_on_hourly_bases(5)
+rental.display_stock()
+rental.rent_bike_on_daily_bases(10)
+rental.display_stock()
+rental.rent_bike_on_weekly_bases(10)
 rental.display_stock()
