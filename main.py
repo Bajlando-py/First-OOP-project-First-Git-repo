@@ -1,4 +1,3 @@
-import datetime
 import datetime as dt
 
 
@@ -54,8 +53,34 @@ class BikeRental:
             self.__stock -= num_bikes
             return rent_start
 
-
-# TODO 6 - Create a method to return bike from the system
+    # TODO 6 - Create a method to return bike from the system
+    def return_bike(self, returns):
+        """Adds bikes returned from customer, returns bill."""
+        rent_start, rent_period, num_bikes = returns
+        bill = 0
+        if rent_start and rent_period and num_bikes > 0:
+            self.__stock += num_bikes
+            rent_end = dt.datetime.now()
+            rent_duration = rent_end - rent_start
+            # Hourly bill calculation
+            if rent_period == 1:
+                bill = round(rent_duration.seconds / 3600) * 5 * num_bikes
+            # Daily bill calculation
+            elif rent_period == 2:
+                bill = round(rent_duration.days) * 20 * num_bikes
+            # Weekly bill calculation
+            elif rent_period == 3:
+                bill = round(rent_duration.days / 7) * 60 * num_bikes
+            # 30% family discount 3-6 bikes rented
+            if 2 < num_bikes < 7:
+                print("You are eligible for family discount of 30%.")
+                bill = bill * 0.7
+            print("Thank you for returning the bikes. We hope you had a great time.")
+            print(f"Your bill is: ${bill}.")
+            return bill
+        else:
+            print("Please enter valid information.")
+            return None
 
 # TODO 7 - Create Customer Class and initialize attributes
 
