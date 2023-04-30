@@ -58,7 +58,7 @@ class BikeRental:
         """Adds bikes returned from customer, returns bill."""
         rent_start, rent_period, num_bikes = returns
         bill = 0
-        if rent_start and rent_period and num_bikes > 0:
+        if rent_start and rent_period and num_bikes:
             self.__stock += num_bikes
             rent_end = dt.datetime.now()
             rent_duration = rent_end - rent_start
@@ -82,11 +82,40 @@ class BikeRental:
             print("Please enter valid information.")
             return None
 
+
 # TODO 7 - Create Customer Class and initialize attributes
+class Customer:
+    def __init__(self):
+        """Intializer for customer class"""
+        self.bikes = 0
+        self.rental_bases = 0
+        self.rental_time = 0
+        self.bill = 0
 
-# TODO 8 - Create a method to request bike from the system
+    # TODO 8 - Create a method to request bike from the system
+    def request_bike(self):
+        """Takes a request from the customer for the number of bikes"""
+        bikes = input("Please enter how many bikes do you want to rent: ")
+        try:
+            bikes = int(bikes)
+        except:
+            print("You need to enter valid positive number.")
+            return -1
+        if bikes < 1:
+            print("You need to enter valid positive number.")
+            return -1
+        else:
+            self.bikes = bikes
+        return self.bikes
 
-# TODO 9 - Create a method to return bike to the system
+    # TODO 9 - Create a method to return bike to the system
+    def return_bikes(self):
+        """Allows customers to return their bikes to the rental shop"""
+        if self.bikes and self.rental_bases and self.rental_time:
+            return self.rental_time, self.rental_bases, self.bikes
+        else:
+            return 0, 0, 0
+
 
 # TODO 10 - Main program logic : print options to the console
 
@@ -94,11 +123,7 @@ class BikeRental:
 
 # TODO 12 - Based on selected choice call methods from Bike
 
-rental = BikeRental()
-rental.display_stock()
-rental.rent_bike_on_hourly_bases(5)
-rental.display_stock()
-rental.rent_bike_on_daily_bases(10)
-rental.display_stock()
-rental.rent_bike_on_weekly_bases(10)
-rental.display_stock()
+customer1 = Customer()
+print(customer1.bikes)
+customer1.request_bike()
+print(customer1.bikes)
